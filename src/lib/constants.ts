@@ -266,14 +266,21 @@ export const TESTIMONIALS = [
     quote:
       "My internship with DAY Foundation, Indore was a deeply enriching and purpose-driven experience. Being part of initiatives like crowdfunding, project pitching, sponsorship research and campaign planning allowed me to witness how small efforts can create a powerful social impact.",
     name: "Teshu Namdev",
-    location: "Indore",
+    location: "Intern",
     image: "/images/testimonial-1.jpg",
+  },
+   {
+    quote:
+      "My 15-day internship with DAY Foundation was a meaningful learning experience. I researched SHGs and subsidised education, worked on Project Muskan — creating a crowdfunding pitch, video, and graphic — and explored PR for NGOs. This experience strengthened my skills in research, creativity, and communication.",
+    name: "Kushagra Jain",
+    location: "Intern",
+    image: "/images/testimonial-4.jpg",
   },
   {
     quote:
       "As a law student, interning with DAY Foundation has been a truly meaningful experience. The internship gave me valuable exposure to grassroots-level initiatives focused on women empowerment, access to free education for children, and awareness of government welfare schemes.",
     name: "Pooja Sindhu",
-    location: "Law Student",
+    location: "Intern",
     image: "/images/testimonial-2.jpg",
   },
   {
@@ -283,12 +290,12 @@ export const TESTIMONIALS = [
     location: "Intern",
     image: "/images/testimonial-3.jpg",
   },
-  {
+   {
     quote:
-      "My 15-day internship with DAY Foundation was a meaningful learning experience. I researched SHGs and subsidised education, worked on Project Muskan — creating a crowdfunding pitch, video, and graphic — and explored PR for NGOs. This experience strengthened my skills in research, creativity, and communication.",
-    name: "Kushagra Jain",
+      "It was a valuable learning experience. The internship was well-organized and provided practical exposure to real-world legal work, even in a virtual setting.Throughout the internship, I was assigned meaningful tasks such as legal research, drafting briefs, writing case summaries, and reviewing judgments. These tasks helped me apply theoretical concepts from my studies to actual legal scenarios, improving both my analytical and writing skills.",
+    name: "Yuvraj Singh Thakur",
     location: "Intern",
-    image: "",
+    image: "/images/testimonial-5.jpg",
   },
 ] as const;
 

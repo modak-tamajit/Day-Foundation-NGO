@@ -38,6 +38,8 @@ const AVAILABLE_TESTIMONIAL_IMAGES = new Set([
   "/images/testimonial-1.jpg",
   "/images/testimonial-2.jpg",
   "/images/testimonial-3.jpg",
+  "/images/testimonial-4.jpg",
+  "/images/testimonial-5.jpg",
 ]);
 
 function getInitials(name: string) {
