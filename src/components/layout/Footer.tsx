@@ -48,7 +48,7 @@ export default function Footer() {
               id="footer-logo"
             >
               <Image
-                src="/images/Logo.png"
+                src="/images/logo.png"
                 alt="DAY Foundation"
                 width={44}
                 height={44}

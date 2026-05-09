@@ -81,7 +81,7 @@ export default function Navbar() {
           className="flex items-center gap-2"
         >
           <Image
-            src="/images/Logo.png"
+            src="/images/logo.png"
             alt="DAY Foundation — Development And Youth"
             width={48}
             height={48}
