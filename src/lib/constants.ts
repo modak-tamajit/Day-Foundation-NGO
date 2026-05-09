@@ -10,10 +10,12 @@
 
 /* ── Navigation ── */
 export const NAV_LINKS = [
-  { label: "Our Mission", href: "/#mission" },
-  { label: "Community Stories", href: "/impact" },
-  { label: "Impact", href: "/#impact-stats" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Our Team", href: "/our-team" },
+  { label: "Our Work", href: "/programs" },
   { label: "Get Involved", href: "/get-involved" },
+  { label: "Contact Us", href: "/contact" },
 ] as const;
 
 export const NAV_CTA = {
@@ -187,45 +189,53 @@ export const IMPACT_STATS = [
   { value: "2022", label: "Founded", description: "12th April 2022" },
 ] as const;
 
-/* ── Team / Central Management ── */
-export const TEAM_MEMBERS = [
-  {
-    name: "Niharika Vasvani",
-    role: "Head of Human Resource",
-    bio: "Leading HR operations, volunteer management, and organizational development across all cities.",
-    image: "/images/team-niharika.jpg",
-  },
-  {
-    name: "Aditi Tiwari",
-    role: "Head of Programs & Development",
-    bio: "Driving program strategy, development initiatives, and community impact measurement.",
-    image: "/images/team-aditi.jpg",
-  },
-  {
-    name: "Khushi Tandon",
-    role: "Head of Legal & Advocacy",
-    bio: "Ensuring legal compliance, policy adherence, and advocacy efforts across the organization.",
-    image: "/images/team-khushi.jpg",
-  },
-  {
-    name: "Radhika Umre",
-    role: "Head of SMH",
-    bio: "Overseeing social media and digital outreach to amplify DAY Foundation's mission and reach.",
-    image: "/images/team-radhika.jpg",
-  },
-  {
-    name: "Harshita Saraiya",
-    role: "Head of PR",
-    bio: "Managing public relations, media engagement, and organizational communication.",
-    image: "/images/team-harshita.jpg",
-  },
-  {
-    name: "Khushali Tak",
-    role: "Head of Finance & Hiring Executive",
-    bio: "Managing financial operations, fund allocation, and executive hiring processes.",
-    image: "/images/team-khushali.jpg",
-  },
-] as const;
+/* ── Team Members by City/Division ── */
+export const TEAM_BY_CATEGORY = {
+  Central: [
+    { name: "Om Sen", role: "Founder & Executive Director", image: "/images/team-om.jpg" },
+    { name: "Niharika Vasvani", role: "Head of Human Resources (HR)", image: "/images/team-niharika.jpg" },
+    { name: "Aditi Tiwari", role: "Head of Programs & Development", image: "/images/team-aditi.jpg" },
+    { name: "Radhika Umre", role: "Head of Social Media & Marketing", image: "/images/team-radhika.jpg" },
+    { name: "Khushi Tandan", role: "Legal & Communication Head", image: "/images/team-khushi.jpg" },
+    { name: "Vaibhav Sharma", role: "Head of Finance", image: "/images/team-vaibhav.jpg" },
+    { name: "Khushali Tak", role: "Hiring Executive", image: "/images/team-khushali.jpg" },
+    { name: "Gunika Upadhyay", role: "Outreach Manager", image: "/images/team-gunika.jpg" },
+  ],
+  Jabalpur: [
+    { name: "Vinayak Khandelwal", role: "Management Coordinator", image: "/images/team-vinayak.jpg" },
+    { name: "Moulshree Sahu", role: "Creative Head", image: "/images/team-moulshree.jpg" },
+    { name: "Nayanika Gupta", role: "Assistant Creative Head", image: "/images/team-nayanika.jpg" },
+    { name: "Yash Jhureley", role: "Head of Logistics", image: "/images/team-yash.jpg" },
+    { name: "Harsh Soni", role: "Assistant Head of Logistics", image: "/images/team-harsh-soni.jpg" },
+    { name: "Ananya Jayan", role: "Education & Curriculum Manager", image: "/images/team-ananya.jpg" },
+    { name: "Ishika Singh Verma", role: "Education & Curriculum Manager", image: "/images/team-ishika.jpg" },
+    { name: "Amit Kanojiya", role: "Head of Human Resources (HR)", image: "/images/team-amit.jpg" },
+  ],
+  Indore: [
+    { name: "Khushi Chanodiya", role: "Management Coordinator", image: "/images/team-khushi-c.jpg" },
+    { name: "Nikita Patel", role: "Education & Curriculum Manager", image: "/images/team-nikita.jpg" },
+    { name: "Saurabh Pandey", role: "Education & Curriculum Manager", image: "/images/team-saurabh.jpg" },
+    { name: "Zenab Sheikh", role: "Creative Head", image: "/images/team-zenab.jpg" },
+    { name: "Urvi", role: "Assistant Creative Head", image: "/images/team-urvi.jpg" },
+    { name: "Edwin Kujur", role: "Head of Human Resources (HR)", image: "/images/team-edwin.jpg" },
+    { name: "Priyanshi Dubey", role: "Assistant Human Resources (HR) Head", image: "/images/team-priyanshi.jpg" },
+    { name: "Dhruv Mukati", role: "Head of Logistics", image: "/images/team-dhruv.jpg" },
+    { name: "Abhijeet Singh Sengar", role: "Assistant Head of Logistics", image: "/images/team-abhijeet.jpg" },
+    { name: "Neha Singh", role: "Legal Manager", image: "/images/team-neha.jpg" },
+    { name: "Khushi Kapoor", role: "Health Care Manager", image: "/images/team-khushi-k.jpg" },
+  ],
+  "Social Media": [
+    { name: "Aadya Mishra", role: "Head of Social Media", image: "/images/team-aadya.jpg" },
+    { name: "Archie Yadav", role: "Assistant Head of Social Media", image: "/images/team-archie.jpg" },
+    { name: "Harsh Vishwakarma", role: "Assistant Head of Social Media", image: "/images/team-harsh-v.jpg" },
+    { name: "Shaurya Nanda", role: "Head of Public Relations (PR)", image: "/images/team-shaurya.jpg" },
+    { name: "Saniya Naaz", role: "Assistant Head of Public Relations (PR)", image: "/images/team-saniya.jpg" },
+    { name: "Ayushman Rathore", role: "Assistant Head of Public Relations (PR)", image: "/images/team-ayushman.jpg" },
+  ],
+} as const;
+
+/* Legacy flat list — kept for any existing references */
+export const TEAM_MEMBERS = TEAM_BY_CATEGORY.Central;
 
 /* ── City Management ── */
 export const CITY_MANAGEMENT = [
@@ -419,22 +429,24 @@ export const FUTURE_VISION = [
 
 /* ── Footer Links ── */
 export const FOOTER_LINKS = {
-  explore: [
-    { label: "Our Mission", href: "/#mission" },
-    { label: "Impact Stories", href: "/impact" },
-    { label: "Programs", href: "/programs" },
-    { label: "Events", href: "/#events" },
+  navigate: [
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Our Team", href: "/about#team" },
+    { label: "Our Work", href: "/programs" },
+    { label: "Get Involved", href: "/get-involved" },
+    { label: "Contact Us", href: "/contact" },
   ],
   governance: [
-    { label: "About Us", href: "/about" },
     { label: "Transparency", href: "/about#transparency" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Bylaws", href: "/about#bylaws" },
+    { label: "NITI Aayog Registration", href: "/about#credentials" },
   ],
   connect: [
-    { label: "Contact Us", href: "/contact" },
     { label: "Volunteer", href: "/get-involved#volunteer" },
     { label: "Internship", href: "/get-involved#internship" },
     { label: "Donate", href: "/get-involved#donate" },
+    { label: "Instagram", href: "https://instagram.com/dayfoundation_ngo" },
   ],
 } as const;

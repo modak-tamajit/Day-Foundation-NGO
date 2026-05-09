@@ -94,8 +94,8 @@ export default function DonationCTA() {
               Every Contribution Creates Ripples of Change
             </h2>
             <p className="text-body-lg text-white/85 max-w-2xl mx-auto mb-8">
-              Your donation is tax-deductible under Section 80G. 94% of every rupee goes directly to
-              community programs. Join 5,000+ supporters making a difference.
+              Your donation is tax-deductible under Section 80G. Every rupee goes directly to
+              community programs. Join 1,200+ interns, volunteers, and donors already making a difference.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link

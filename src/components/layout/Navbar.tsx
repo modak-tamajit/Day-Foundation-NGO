@@ -118,13 +118,6 @@ export default function Navbar() {
           >
             {NAV_CTA.donate.label}
           </Link>
-          <Link
-            href={NAV_CTA.portal.href}
-            id="nav-portal-btn"
-            className="btn-secondary text-body-sm px-5 py-2.5"
-          >
-            {NAV_CTA.portal.label}
-          </Link>
         </div>
 
         {/* ── Mobile Menu Toggle ── */}
@@ -174,13 +167,6 @@ export default function Navbar() {
                   className="btn-primary text-center"
                 >
                   {NAV_CTA.donate.label}
-                </Link>
-                <Link
-                  href={NAV_CTA.portal.href}
-                  onClick={() => setIsOpen(false)}
-                  className="btn-secondary text-center"
-                >
-                  {NAV_CTA.portal.label}
                 </Link>
               </div>
             </div>

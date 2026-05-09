@@ -17,15 +17,12 @@ import MissionVision from "@/components/home/MissionVision";
 import ImpactStats from "@/components/home/ImpactStats";
 import FocusAreas from "@/components/home/FocusAreas";
 import StoriesSection from "@/components/home/StoriesSection";
-import TeamSection from "@/components/home/TeamSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import CampaignsSection from "@/components/home/CampaignsSection";
-import EventsSection from "@/components/home/EventsSection";
 import GallerySection from "@/components/home/GallerySection";
 import VolunteerCTA from "@/components/home/VolunteerCTA";
 import DonationCTA from "@/components/home/DonationCTA";
 import FAQPreview from "@/components/home/FAQPreview";
-import Newsletter from "@/components/home/Newsletter";
 
 export default function HomePage() {
   return (
@@ -45,32 +42,23 @@ export default function HomePage() {
       {/* 5. Impact Stories — Editorial storytelling */}
       <StoriesSection />
 
-      {/* 6. Leadership — Team portraits */}
-      <TeamSection />
-
-      {/* 7. Testimonials — Quote cards */}
+      {/* 6. Testimonials — Quote cards */}
       <TestimonialsSection />
 
       {/* 8. Active Campaigns — Image overlay cards */}
       <CampaignsSection />
 
-      {/* 9. Events — Timeline with RSVP */}
-      <EventsSection />
-
-      {/* 10. Gallery — Masonry photo grid */}
+      {/* 9. Gallery — Masonry photo grid */}
       <GallerySection />
 
-      {/* 11. Volunteer CTA — Two-column with image */}
+      {/* 10. Volunteer CTA — Two-column with image */}
       <VolunteerCTA />
 
-      {/* 12. Donation CTA — Credentials + gradient block */}
+      {/* 11. Donation CTA — Credentials + gradient block */}
       <DonationCTA />
 
-      {/* 13. FAQ Preview — Top 3 questions */}
+      {/* 12. FAQ Preview — Top 3 questions */}
       <FAQPreview />
-
-      {/* 14. Newsletter — Email subscription */}
-      <Newsletter />
     </>
   );
 }

@@ -19,7 +19,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Shield, BadgeCheck, Building2, FileCheck, Heart, Target, Eye } from "lucide-react";
-import { TEAM_MEMBERS, CREDENTIALS, ORG_INFO } from "@/lib/constants";
+import { CREDENTIALS, ORG_INFO } from "@/lib/constants";
 
 const ICON_MAP: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   Shield,
@@ -128,42 +128,6 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-heading text-heading-md text-[#1A1A1A] mb-2">{value.title}</h3>
                 <p className="text-body-sm text-[#6B6B6B]">{value.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Team ── */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-14"
-          >
-            <h2 className="section-heading">Leadership with Heart</h2>
-            <p className="section-subtitle">
-              Meet the people anchoring our vision through hands-on service.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {TEAM_MEMBERS.map((member, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className="text-center group"
-              >
-                <div className="relative w-56 h-56 mx-auto mb-6 rounded-3xl overflow-hidden shadow-card group-hover:shadow-card-hover transition-all duration-400">
-                  <Image src={member.image} alt={member.name} fill className="object-cover" sizes="224px" />
-                </div>
-                <h3 className="font-heading text-heading-md text-[#1A1A1A] mb-1">{member.name}</h3>
-                <p className="text-body-sm font-medium text-primary mb-2">{member.role}</p>
-                <p className="text-body-sm text-[#6B6B6B] max-w-xs mx-auto">{member.bio}</p>
               </motion.div>
             ))}
           </div>

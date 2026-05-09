@@ -85,6 +85,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  icons: {
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
 };
 
 /* ── Root Layout ── */
@@ -94,7 +98,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable}`}>
+    <html lang="en" className={`${playfairDisplay.variable} ${inter.variable}`} suppressHydrationWarning>
       <body className="font-body antialiased">
         <Navbar />
         <main id="main-content" role="main">

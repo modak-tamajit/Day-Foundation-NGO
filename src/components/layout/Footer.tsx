@@ -52,7 +52,7 @@ export default function Footer() {
                 alt="DAY Foundation"
                 width={44}
                 height={44}
-                className="w-11 h-11 rounded-full brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+                className="w-11 h-11 rounded-full opacity-90 group-hover:opacity-100 transition-all duration-300"
               />
               <span className="font-heading text-2xl font-bold text-white group-hover:text-primary-200 transition-colors">
                 {ORG_INFO.name}

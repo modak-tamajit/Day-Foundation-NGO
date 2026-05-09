@@ -17,7 +17,8 @@
 
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
 import { TrendingUp, School, BarChart3, Users } from "lucide-react";
 import { IMPACT_STATS } from "@/lib/constants";
 
@@ -39,6 +40,50 @@ const itemVariants = {
     transition: { duration: 0.5, ease: "easeOut" },
   },
 };
+
+/* ── Extracts numeric part + suffix from strings like "1,200+", "2022", "3" ── */
+function parseStatValue(raw: string): { prefix: string; number: number; suffix: string } {
+  const match = raw.match(/^([^\d]*?)([\d,]+)([^\d]*)$/);
+  if (!match) return { prefix: "", number: 0, suffix: raw };
+  return {
+    prefix: match[1],
+    number: parseInt(match[2].replace(/,/g, ""), 10),
+    suffix: match[3],
+  };
+}
+
+function formatWithCommas(n: number): string {
+  return n.toLocaleString("en-IN");
+}
+
+/* ── Individual animated counter ── */
+function AnimatedCounter({ value, duration = 1800 }: { value: string; duration?: number }) {
+  const { prefix, number, suffix } = parseStatValue(value);
+  const [display, setDisplay] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
+  useEffect(() => {
+    if (!inView) return;
+    let start: number | null = null;
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(Math.floor(eased * number));
+      if (progress < 1) requestAnimationFrame(step);
+      else setDisplay(number);
+    };
+    requestAnimationFrame(step);
+  }, [inView, number, duration]);
+
+  return (
+    <span ref={ref}>
+      {prefix}{formatWithCommas(display)}{suffix}
+    </span>
+  );
+}
 
 export default function ImpactStats() {
   return (
@@ -82,7 +127,7 @@ export default function ImpactStats() {
                   <Icon className="text-primary" size={26} />
                 </div>
                 <p className="font-heading text-display-md text-primary font-bold">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} duration={1800} />
                 </p>
                 <p className="text-body-md font-semibold text-[#1A1A1A] mt-1">
                   {stat.label}

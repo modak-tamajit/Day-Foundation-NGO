@@ -136,8 +136,8 @@ export default function HeroSection() {
                   <span className="text-secondary text-lg">🌱</span>
                 </div>
                 <div>
-                  <p className="text-body-sm font-semibold text-[#1A1A1A]">10+ Years of Presence</p>
-                  <p className="text-caption text-[#6B6B6B]">Across 4 Indian states</p>
+                  <p className="text-body-sm font-semibold text-[#1A1A1A]">Active Since April 2022</p>
+                  <p className="text-caption text-[#6B6B6B]">Across 3 Indian cities</p>
                 </div>
               </div>
             </motion.div>

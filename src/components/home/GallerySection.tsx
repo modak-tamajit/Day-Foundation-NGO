@@ -22,10 +22,10 @@ import { motion } from "framer-motion";
 
 /* Gallery images — edit this array to add/remove photos */
 const GALLERY_IMAGES = [
-  { src: "/images/gallery-1.jpg", alt: "Community health camp in rural Bihar", span: "row-span-2" },
+  { src: "/images/gallery-1.jpg", alt: "Community health camp in rural Bihar", span: "md:row-span-2" },
   { src: "/images/gallery-2.jpg", alt: "Children learning in digital classroom", span: "" },
   { src: "/images/gallery-3.jpg", alt: "Volunteer team distributing supplies", span: "" },
-  { src: "/images/gallery-4.jpg", alt: "Women's livelihood training workshop", span: "row-span-2" },
+  { src: "/images/gallery-4.jpg", alt: "Women's livelihood training workshop", span: "md:row-span-2" },
   { src: "/images/gallery-5.jpg", alt: "Community gathering and celebration", span: "" },
   { src: "/images/gallery-6.jpg", alt: "Tree planting initiative", span: "" },
 ];

@@ -38,6 +38,21 @@ export default function MissionVision() {
   return (
     <section id="mission" className="section-padding bg-surface-muted">
       <div className="container-custom">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <span className="badge-primary mb-4 inline-block">WHO WE ARE</span>
+          <h2 className="section-heading">Our Mission & Vision</h2>
+          <p className="section-subtitle">
+            Every action we take is anchored in a clear purpose — empowering communities today for a stronger, more equitable tomorrow.
+          </p>
+        </motion.div>
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
