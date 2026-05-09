@@ -51,3 +51,4 @@ next-env.d.ts
 prisma/migrations/
 *.db
 *.sqlite
+HELP.md
