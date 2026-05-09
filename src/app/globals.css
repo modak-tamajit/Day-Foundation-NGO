@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===================================================================
+ * DAY Foundation — Global Styles
+ * ===================================================================
+ * This file contains:
+ * - CSS custom properties (design tokens)
+ * - Base typography styles
+ * - Reusable utility classes
+ * - Smooth scrolling & selection styles
+ * =================================================================== */
+
+/* ── CSS Custom Properties (Design Tokens) ── */
+:root {
+  /* Colors — mirrored from tailwind.config.ts for CSS usage */
+  --color-primary: #C4572A;
+  --color-primary-light: #E8734A;
+  --color-secondary: #5B7A5E;
+  --color-cream: #FDF6EE;
+  --color-rose: #FDEEE8;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-border: #E8E0D8;
+
+  /* Typography */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  /* Spacing */
+  --section-padding-y: clamp(4rem, 8vw, 7.5rem);
+  --container-padding-x: clamp(1rem, 4vw, 2rem);
+  --container-max-width: 1280px;
+
+  /* Transitions */
+  --transition-fast: 200ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Border radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* ── Base Reset & Typography ── */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream-50 text-[#1A1A1A] font-body;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /* Headings default to serif font */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+
+  /* Selection color */
+  ::selection {
+    background-color: rgba(196, 87, 42, 0.15);
+    color: #1A1A1A;
+  }
+
+  /* Focus ring for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FDF6EE;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #D4C9BD;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #C4572A;
+  }
+}
+
+/* ── Reusable Utility Classes ── */
+@layer components {
+  /* Section wrapper — consistent vertical padding */
+  .section-padding {
+    @apply py-16 md:py-22 lg:py-26;
+  }
+
+  /* Container — centered max-width wrapper */
+  .container-custom {
+    @apply mx-auto max-w-container px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section heading style */
+  .section-heading {
+    @apply font-heading text-display-md text-[#1A1A1A] mb-4;
+  }
+
+  /* Section subtitle */
+  .section-subtitle {
+    @apply text-body-lg text-[#6B6B6B] max-w-2xl mx-auto;
+  }
+
+  /* Card base */
+  .card-base {
+    @apply bg-white rounded-3xl shadow-soft border border-border-light 
+           transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
+  }
+
+  /* Button — Primary */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 
+           bg-primary text-white font-body font-semibold 
+           px-6 py-3 rounded-full 
+           transition-all duration-300 
+           hover:bg-primary-dark hover:shadow-warm 
+           focus-visible:outline-primary active:scale-[0.98];
+  }
+
+  /* Button — Secondary */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 
+           bg-white text-primary font-body font-semibold 
+           px-6 py-3 rounded-full border-2 border-primary 
+           transition-all duration-300 
+           hover:bg-primary hover:text-white 
+           focus-visible:outline-primary active:scale-[0.98];
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full 
+           text-caption font-semibold uppercase tracking-wider;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-50 text-primary;
+  }
+
+  .badge-secondary {
+    @apply badge bg-secondary-50 text-secondary;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-primary-light bg-clip-text text-transparent;
+  }
+
+  /* Warm overlay for images */
+  .warm-overlay {
+    @apply relative after:absolute after:inset-0 after:bg-gradient-to-t 
+           after:from-black/40 after:to-transparent after:rounded-3xl;
+  }
+}
+
+/* ── Animations ── */
+@layer utilities {
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+}
