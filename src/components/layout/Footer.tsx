@@ -16,6 +16,7 @@
  * =================================================================== */
 
 import Link from "next/link";
+import Image from "next/image";
 import {
   Instagram,
   Twitter,
@@ -43,10 +44,19 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link
               href="/"
-              className="font-heading text-2xl font-bold text-white hover:text-primary-200 transition-colors"
+              className="flex items-center gap-3 group"
               id="footer-logo"
             >
-              {ORG_INFO.name}
+              <Image
+                src="/images/logo.png"
+                alt="DAY Foundation"
+                width={44}
+                height={44}
+                className="w-11 h-11 rounded-full brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
+              />
+              <span className="font-heading text-2xl font-bold text-white group-hover:text-primary-200 transition-colors">
+                {ORG_INFO.name}
+              </span>
             </Link>
             <p className="mt-4 text-body-sm text-gray-400 max-w-sm leading-relaxed">
               {ORG_INFO.description}

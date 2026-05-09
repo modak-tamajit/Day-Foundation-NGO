@@ -19,6 +19,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS, NAV_CTA, ORG_INFO } from "@/lib/constants";
@@ -77,9 +78,19 @@ export default function Navbar() {
         <Link
           href="/"
           id="nav-logo"
-          className="flex items-center gap-2 font-heading text-xl md:text-2xl font-bold text-primary transition-colors hover:text-primary-dark"
+          className="flex items-center gap-2"
         >
-          {ORG_INFO.name}
+          <Image
+            src="/images/logo.png"
+            alt="DAY Foundation — Development And Youth"
+            width={48}
+            height={48}
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full"
+            priority
+          />
+          <span className="font-heading text-lg md:text-xl font-bold text-primary">
+            {ORG_INFO.name}
+          </span>
         </Link>
 
         {/* ── Desktop Links ── */}

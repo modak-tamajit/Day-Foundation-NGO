@@ -46,9 +46,14 @@ export const ORG_INFO = {
 
   /* Address */
   address: {
-    city: "Delhi",
-    state: "Delhi",
+    street: "C/O Maharajpur Adhartal, 2 Patel Nagar, Ankita Parisar",
+    city: "Jabalpur",
+    state: "Madhya Pradesh",
+    pincode: "482004",
     country: "India",
+    full: "C/O Maharajpur Adhartal, 2 Patel Nagar, Ankita Parisar, Jabalpur, Madhya Pradesh 482004, India",
+    mapQuery: "2+Patel+Nagar+Ankita+Parisar+Jabalpur+MP+482004+India",
+    coordinates: { lat: 23.1815, lng: 79.9864 },
   },
 
   /* Cities of Operation */
@@ -105,7 +110,8 @@ export const HERO_CONTENT = {
 
 /* ── Founder's Message ── */
 export const FOUNDER_MESSAGE = {
-  name: "Founder & Executive Director",
+  name: "Om Sen",
+  title: "Founder & Executive Director",
   message:
     "At DAY Foundation, our mission is to build an inclusive society where every individual has access to Education, Aid, Youth, and Care. Since our inception, we have been dedicated to empowering youth, supporting underprivileged communities, and providing sustainable solutions through initiatives like Rojgar and child development programs. Our goal is to create a future where everyone has the opportunity to grow, lead a dignified life, and become self-reliant. I am immensely proud of our team's commitment and hard work, which makes this journey possible. Thank you for your continued support as we make a meaningful difference, together.",
   image: "/images/founder.jpg",
@@ -244,24 +250,31 @@ export const CITY_MANAGEMENT = [
 export const TESTIMONIALS = [
   {
     quote:
-      "The DAY Foundation internship gave me a real purpose. Working with slum children in Indore opened my eyes to the power of education and compassion.",
-    name: "Intern Volunteer",
+      "My internship with DAY Foundation, Indore was a deeply enriching and purpose-driven experience. Being part of initiatives like crowdfunding, project pitching, sponsorship research and campaign planning allowed me to witness how small efforts can create a powerful social impact.",
+    name: "Teshu Namdev",
     location: "Indore",
     image: "/images/testimonial-1.jpg",
   },
   {
     quote:
-      "Being part of the healthcare drives was life-changing. DAY Foundation doesn't just talk about impact — they create it, on the ground, every single day.",
-    name: "Healthcare Volunteer",
-    location: "Jabalpur",
+      "As a law student, interning with DAY Foundation has been a truly meaningful experience. The internship gave me valuable exposure to grassroots-level initiatives focused on women empowerment, access to free education for children, and awareness of government welfare schemes.",
+    name: "Pooja Sindhu",
+    location: "Law Student",
     image: "/images/testimonial-2.jpg",
   },
   {
     quote:
-      "The 15-day social work internship program gave me skills, experience, and a certificate that truly means something. This foundation walks the talk.",
-    name: "Student Intern",
-    location: "Delhi",
+      "My internship at DAY Foundation was a great learning experience. It helped me improve my communication, teamwork, and confidence. The team was very supportive and made me feel like a part of the organisation. I learned the importance of social work and how small efforts can make a big difference.",
+    name: "Ranveer Singh Chauhan",
+    location: "Intern",
     image: "/images/testimonial-3.jpg",
+  },
+  {
+    quote:
+      "My 15-day internship with DAY Foundation was a meaningful learning experience. I researched SHGs and subsidised education, worked on Project Muskan — creating a crowdfunding pitch, video, and graphic — and explored PR for NGOs. This experience strengthened my skills in research, creativity, and communication.",
+    name: "Kushagra Jain",
+    location: "Intern",
+    image: "/images/testimonial-4.jpg",
   },
 ] as const;
 

@@ -79,10 +79,10 @@ export default function ContactPage() {
                 <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center mb-3">
                   <MapPin className="text-primary" size={20} />
                 </div>
-                <h3 className="font-heading text-heading-sm text-[#1A1A1A] mb-2">Active Cities</h3>
+                <h3 className="font-heading text-heading-sm text-[#1A1A1A] mb-2">Registered Office</h3>
                 <p className="text-body-sm text-[#6B6B6B]">
-                  {ORG_INFO.activeCities.join(", ")}<br />
-                  {ORG_INFO.address.city}, {ORG_INFO.address.state}
+                  {ORG_INFO.address.street}<br />
+                  {ORG_INFO.address.city}, {ORG_INFO.address.state} {ORG_INFO.address.pincode}
                 </p>
               </div>
 
@@ -203,59 +203,106 @@ export default function ContactPage() {
         </div>
       </section>
 
+      {/* ── Registered Office Map ── */}
+      <section className="section-padding bg-surface-muted">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="section-heading">Our Registered Office</h2>
+            <p className="section-subtitle">
+              {ORG_INFO.address.full}
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-3xl overflow-hidden shadow-card border border-border-light"
+          >
+            <iframe
+              src={`https://maps.google.com/maps?q=${ORG_INFO.address.coordinates.lat},${ORG_INFO.address.coordinates.lng}&z=16&output=embed`}
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="DAY Foundation Office — Jabalpur, Madhya Pradesh"
+              className="w-full"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* ── Our Presence ── */}
       <section className="section-padding bg-cream">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Active Cities */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
+              className="bg-white rounded-3xl p-8 shadow-soft border border-border-light"
             >
-              <h2 className="font-heading text-display-md text-primary mb-4">
-                Our Presence
-              </h2>
-              <p className="text-body-lg text-[#6B6B6B] mb-6 leading-relaxed">
-                Active in Delhi, Indore, and Jabalpur, with plans to expand into Delhi NCR,
-                Prayagraj, and Mumbai. We are committed to reaching every corner of the community
-                where our presence is needed.
-              </p>
-              <div className="mb-6">
-                <h3 className="font-heading text-heading-sm text-[#1A1A1A] mb-3">Active Cities</h3>
-                <ul className="space-y-3">
-                  {ORG_INFO.activeCities.map((loc, i) => (
-                    <li key={i} className="flex items-center gap-2 text-body-md text-[#4A4A4A]">
-                      <span className="w-2 h-2 rounded-full bg-primary" />
-                      {loc}
-                    </li>
-                  ))}
-                </ul>
+              <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-4">
+                <MapPin className="text-primary" size={24} />
               </div>
-              <div>
-                <h3 className="font-heading text-heading-sm text-[#1A1A1A] mb-3">Expanding To</h3>
-                <ul className="space-y-3">
-                  {ORG_INFO.expansionCities.map((loc, i) => (
-                    <li key={i} className="flex items-center gap-2 text-body-md text-[#6B6B6B]">
-                      <span className="w-2 h-2 rounded-full bg-secondary" />
-                      {loc}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h3 className="font-heading text-heading-md text-[#1A1A1A] mb-4">Active Cities</h3>
+              <ul className="space-y-3">
+                {ORG_INFO.activeCities.map((loc, i) => (
+                  <li key={i} className="flex items-center gap-2 text-body-md text-[#4A4A4A]">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                    {loc}
+                  </li>
+                ))}
+              </ul>
             </motion.div>
+
+            {/* Expanding To */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-card"
+              transition={{ delay: 0.1 }}
+              className="bg-white rounded-3xl p-8 shadow-soft border border-border-light"
             >
-              <Image
-                src="/images/india-map.jpg"
-                alt="DAY Foundation presence across India"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
+              <div className="w-12 h-12 rounded-xl bg-secondary-50 flex items-center justify-center mb-4">
+                <MapPin className="text-secondary" size={24} />
+              </div>
+              <h3 className="font-heading text-heading-md text-[#1A1A1A] mb-4">Expanding To</h3>
+              <ul className="space-y-3">
+                {ORG_INFO.expansionCities.map((loc, i) => (
+                  <li key={i} className="flex items-center gap-2 text-body-md text-[#6B6B6B]">
+                    <span className="w-2 h-2 rounded-full bg-secondary" />
+                    {loc}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Head Office */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white rounded-3xl p-8 shadow-soft border border-border-light"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-4">
+                <MapPin className="text-primary" size={24} />
+              </div>
+              <h3 className="font-heading text-heading-md text-[#1A1A1A] mb-4">Head Office</h3>
+              <p className="text-body-sm text-[#6B6B6B] leading-relaxed">
+                {ORG_INFO.address.street}<br />
+                {ORG_INFO.address.city}, {ORG_INFO.address.state}<br />
+                {ORG_INFO.address.pincode}, {ORG_INFO.address.country}
+              </p>
             </motion.div>
           </div>
         </div>
