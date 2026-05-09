@@ -21,7 +21,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight, Users } from "lucide-react";
+import { CheckCircle2, ArrowRight, MapPin } from "lucide-react";
+import { ORG_INFO } from "@/lib/constants";
 
 const HEADING = "Be the Change Your Community Needs";
 const DESCRIPTION =
@@ -35,6 +36,8 @@ const POINTS = [
 ];
 
 export default function VolunteerCTA() {
+  const activeCityCount = ORG_INFO.activeCities.length;
+
   return (
     <section id="volunteer-cta" className="section-padding bg-gradient-to-br from-secondary-50 to-cream">
       <div className="container-custom">
@@ -63,10 +66,10 @@ export default function VolunteerCTA() {
               className="absolute -bottom-4 -right-4 md:-right-8 bg-white rounded-2xl shadow-card p-4 border border-border-light"
             >
               <div className="flex items-center gap-2">
-                <Users className="text-secondary" size={24} />
+                <MapPin className="text-secondary" size={24} />
                 <div>
-                  <p className="text-body-sm font-bold text-[#1A1A1A]">120+ Active</p>
-                  <p className="text-caption text-[#6B6B6B]">Volunteers</p>
+                  <p className="text-body-sm font-bold text-[#1A1A1A]">{activeCityCount} Active</p>
+                  <p className="text-caption text-[#6B6B6B]">Cities</p>
                 </div>
               </div>
             </motion.div>

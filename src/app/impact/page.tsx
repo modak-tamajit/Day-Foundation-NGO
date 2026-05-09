@@ -10,7 +10,7 @@
  * - Transparency report link
  * 
  * TO CUSTOMIZE:
- * - Stories → edit CAMPAIGNS in src/lib/constants.ts
+ * - Stories → edit STORIES in src/lib/constants.ts
  * - Stats → edit IMPACT_STATS in src/lib/constants.ts
  * - Filter categories → modify the CATEGORIES array below
  * - Images → replace in public/images/campaign-*.jpg
@@ -23,12 +23,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, BarChart3 } from "lucide-react";
-import { CAMPAIGNS, IMPACT_STATS } from "@/lib/constants";
+import { CAMPAIGNS, IMPACT_STATS, STORIES } from "@/lib/constants";
 
 const CATEGORIES = ["All Stories", "Education", "Healthcare", "Livelihood", "Volunteer Stories"];
 
 export default function ImpactPage() {
   const [activeCategory, setActiveCategory] = useState("All Stories");
+  const impactItems = [
+    ...STORIES.map((item) => ({ ...item, type: "story" as const })),
+    ...CAMPAIGNS.map((item) => ({ ...item, type: "campaign" as const })),
+  ];
+  const filteredItems =
+    activeCategory === "All Stories"
+      ? impactItems
+      : impactItems.filter((item) => item.category === activeCategory);
+  const featured = STORIES[0];
 
   return (
     <>
@@ -36,8 +45,8 @@ export default function ImpactPage() {
       <section className="pt-20">
         <div className="relative h-[60vh] min-h-[400px]">
           <Image
-            src="/images/campaign-education.jpg"
-            alt="From remote villages to national universities"
+            src={featured.image}
+            alt={featured.title}
             fill
             className="object-cover"
             priority
@@ -53,13 +62,12 @@ export default function ImpactPage() {
               >
                 <span className="badge bg-primary text-white mb-4 inline-block">Featured Story</span>
                 <h1 className="font-heading text-display-xl text-white mb-4 max-w-2xl">
-                  From Remote Villages to National Universities
+                  {featured.title}
                 </h1>
                 <p className="text-body-lg text-white/80 max-w-xl mb-6">
-                  Discover how our scholarship programs are bridging the gap for rural talent, turning
-                  dreams of higher education into reality for first-generation learners.
+                  {featured.description}
                 </p>
-                <Link href="#" className="btn-primary bg-white text-primary hover:bg-cream">
+                <Link href={featured.link} className="btn-primary bg-white text-primary hover:bg-cream">
                   Read Full Story <ArrowRight size={18} />
                 </Link>
               </motion.div>
@@ -93,14 +101,15 @@ export default function ImpactPage() {
       <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {CAMPAIGNS.map((story, index) => (
+            {filteredItems.map((story, index) => (
               <motion.div
-                key={index}
+                key={`${story.type}-${story.id}`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 className="group card-base overflow-hidden"
+                id={`${story.type}-${story.id}`}
               >
                 <div className="relative h-52 overflow-hidden">
                   <Image
@@ -116,11 +125,17 @@ export default function ImpactPage() {
                   <h3 className="font-heading text-heading-md text-[#1A1A1A] mb-2">{story.title}</h3>
                   <p className="text-body-sm text-[#6B6B6B] line-clamp-3 mb-4">{story.description}</p>
                   <Link href={story.link} className="inline-flex items-center gap-1 text-body-sm font-semibold text-primary hover:gap-2 transition-all">
-                    Read More <ArrowRight size={14} />
+                    {story.type === "campaign" ? "Learn More" : "Read More"} <ArrowRight size={14} />
                   </Link>
                 </div>
               </motion.div>
             ))}
+
+            {filteredItems.length === 0 && (
+              <div className="md:col-span-2 lg:col-span-3 text-center py-12">
+                <p className="text-body-lg text-[#6B6B6B]">No stories found in this category.</p>
+              </div>
+            )}
           </div>
         </div>
       </section>

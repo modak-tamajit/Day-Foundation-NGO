@@ -81,14 +81,22 @@ export default function Navbar() {
           className="flex items-center gap-2"
         >
           <Image
-            src="/images/logo.png"
+            src="/images/Logo.png"
             alt="DAY Foundation — Development And Youth"
             width={48}
             height={48}
-            className="w-10 h-10 md:w-12 md:h-12 rounded-full"
+            className={cn(
+              "w-10 h-10 md:w-12 md:h-12 rounded-full transition-all duration-300",
+              !isScrolled && "bg-white/80 shadow-[0_4px_18px_rgba(158,62,26,0.18)] ring-1 ring-white/80"
+            )}
             priority
           />
-          <span className="font-heading text-lg md:text-xl font-bold text-primary">
+          <span
+            className={cn(
+              "font-heading text-lg md:text-xl font-bold text-primary transition-all duration-300",
+              !isScrolled && "drop-shadow-[0_1px_8px_rgba(255,255,255,0.95)]"
+            )}
+          >
             {ORG_INFO.name}
           </span>
         </Link>

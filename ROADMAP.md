@@ -4,7 +4,7 @@
 - [x] Next.js 15 project setup
 - [x] Design system (colors, typography, spacing, animations)
 - [x] Responsive Navbar with mobile menu
-- [x] Complete Homepage (14 sections)
+- [x] Complete Homepage (11 active sections)
 - [x] About page
 - [x] Programs page
 - [x] Impact stories page

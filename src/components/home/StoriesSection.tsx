@@ -10,7 +10,7 @@
  * - Image-heavy design matching reference
  * 
  * TO CUSTOMIZE:
- * - Stories → edit CAMPAIGNS in src/lib/constants.ts
+ * - Stories → edit STORIES in src/lib/constants.ts
  * - Layout → modify grid template for different arrangements
  * - Card style → change rounded/shadow/bg classes
  * - Images → replace files in public/images/campaign-*.jpg
@@ -22,7 +22,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { CAMPAIGNS } from "@/lib/constants";
+import { STORIES } from "@/lib/constants";
 
 const containerVariants = {
   hidden: {},
@@ -37,8 +37,8 @@ const itemVariants = {
 };
 
 export default function StoriesSection() {
-  const featured = CAMPAIGNS[0];
-  const secondary = CAMPAIGNS.slice(1);
+  const featured = STORIES[0];
+  const secondary = STORIES.slice(1);
 
   return (
     <section id="stories" className="section-padding bg-cream">

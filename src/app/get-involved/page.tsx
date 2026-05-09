@@ -6,11 +6,11 @@
  * - Hero section
  * - Volunteer opportunities
  * - Internship programs
- * - Donation section with amount options
+ * - Clean donation CTA redirecting to form
  * 
  * TO CUSTOMIZE:
  * - Opportunities → edit the OPPORTUNITIES array below
- * - Donation amounts → modify the AMOUNTS array
+ * - Donation form link → update DONATION_FORM_URL
  * - Images → replace in public/images/
  * =================================================================== */
 
@@ -18,30 +18,41 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Heart, Users, GraduationCap, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Heart, Users, GraduationCap, ArrowRight, Shield, BadgeCheck, Building2 } from "lucide-react";
+import { INTERNSHIP_INFO, ORG_INFO } from "@/lib/constants";
 
 const OPPORTUNITIES = [
   {
+    id: "volunteer",
     title: "On-Ground Volunteer",
     description: "Work directly with communities in health camps, schools, and development projects.",
     commitment: "Weekends / Full-time",
     icon: Users,
+    formLink: ORG_INFO.forms.volunteer,
   },
   {
+    id: "digital-volunteer",
     title: "Digital Volunteer",
     description: "Contribute remotely — content writing, social media, tech support, translations.",
     commitment: "Flexible hours",
     icon: Users,
+    formLink: ORG_INFO.forms.volunteer,
   },
   {
+    id: "internship",
     title: "Student Internship",
-    description: "Certified 3-6 month internship programs for college students across all disciplines.",
-    commitment: "3-6 months",
+    description: `Certified ${INTERNSHIP_INFO.duration} social work internship program for college students across all disciplines.`,
+    commitment: INTERNSHIP_INFO.duration,
     icon: GraduationCap,
+    formLink: INTERNSHIP_INFO.formLink,
   },
 ];
 
-const AMOUNTS = [500, 1000, 2500, 5000, 10000, 25000];
+const TRUST_BADGES = [
+  { icon: Shield, label: "Section 8 Registered" },
+  { icon: Building2, label: "NITI Aayog Verified" },
+  { icon: BadgeCheck, label: "80G Tax Deductible" },
+];
 
 export default function GetInvolvedPage() {
   return (
@@ -91,6 +102,7 @@ export default function GetInvolvedPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
                 className="card-base p-8"
+                id={opp.id}
               >
                 <div className="w-12 h-12 rounded-xl bg-secondary-50 flex items-center justify-center mb-4">
                   <opp.icon className="text-secondary" size={24} />
@@ -98,9 +110,14 @@ export default function GetInvolvedPage() {
                 <h3 className="font-heading text-heading-md text-[#1A1A1A] mb-2">{opp.title}</h3>
                 <p className="text-body-sm text-[#6B6B6B] mb-4">{opp.description}</p>
                 <p className="text-caption text-primary font-semibold">⏱ {opp.commitment}</p>
-                <button className="btn-primary mt-6 w-full">
+                <a
+                  href={opp.formLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary mt-6 w-full"
+                >
                   Apply Now <ArrowRight size={16} />
-                </button>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -116,6 +133,7 @@ export default function GetInvolvedPage() {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
               className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-elevated"
             >
               <Image
@@ -127,49 +145,50 @@ export default function GetInvolvedPage() {
               />
             </motion.div>
 
-            {/* Donation Form */}
+            {/* Donation CTA */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
             >
               <h2 className="font-heading text-display-md text-[#1A1A1A] mb-4">
                 Make a Donation
               </h2>
-              <p className="text-body-lg text-[#6B6B6B] mb-8">
-                100% tax-deductible under Section 80G. 94% of funds go directly to programs.
+              <p className="text-body-lg text-[#6B6B6B] mb-6 leading-relaxed">
+                Every contribution, no matter the size, directly funds education for slum children, 
+                healthcare drives, and youth empowerment programs across India. 100% of your 
+                donation goes to community impact.
               </p>
 
-              {/* Amount Grid */}
-              <div className="grid grid-cols-3 gap-3 mb-6">
-                {AMOUNTS.map((amount) => (
-                  <button
-                    key={amount}
-                    className="py-3 rounded-xl border-2 border-border text-body-md font-semibold text-[#1A1A1A] hover:border-primary hover:text-primary hover:bg-primary-50 transition-all"
+              {/* Trust Badges */}
+              <div className="flex flex-wrap gap-3 mb-8">
+                {TRUST_BADGES.map((badge, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 px-4 py-2.5 bg-white rounded-full border border-border-light shadow-soft"
                   >
-                    ₹{amount.toLocaleString()}
-                  </button>
+                    <badge.icon size={16} className="text-secondary" />
+                    <span className="text-body-sm font-medium text-[#4A4A4A]">{badge.label}</span>
+                  </div>
                 ))}
               </div>
 
-              {/* Custom Amount */}
-              <input
-                type="number"
-                placeholder="Or enter custom amount (₹)"
-                className="w-full px-5 py-3 rounded-xl border border-border bg-white text-body-md mb-6 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary"
-              />
-
-              <button className="btn-primary w-full py-4 text-body-md">
+              {/* Donate Now Button — redirects to Google Form */}
+              <a
+                href={ORG_INFO.forms.donation}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full py-4 text-body-md justify-center"
+              >
                 <Heart size={20} />
                 Donate Now
-              </button>
+                <ArrowRight size={18} />
+              </a>
 
-              <div className="mt-4 flex items-start gap-2">
-                <CheckCircle2 size={16} className="text-secondary mt-0.5 flex-shrink-0" />
-                <p className="text-caption text-[#6B6B6B]">
-                  Secure payment via Razorpay. You will receive an 80G receipt within 24 hours.
-                </p>
-              </div>
+              <p className="mt-4 text-caption text-[#6B6B6B] text-center">
+                Tax-deductible under Section 80G · You will receive a receipt via email
+              </p>
             </motion.div>
           </div>
         </div>

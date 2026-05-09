@@ -9,6 +9,27 @@ import { TEAM_BY_CATEGORY } from "@/lib/constants";
 type Category = keyof typeof TEAM_BY_CATEGORY;
 const CATEGORIES = Object.keys(TEAM_BY_CATEGORY) as Category[];
 const PER_PAGE = 3;
+const AVAILABLE_TEAM_IMAGES = new Set([
+  "/images/team-aditi.jpg",
+  "/images/team-anmol.jpg",
+  "/images/team-founder.jpg",
+  "/images/team-harshita.jpg",
+  "/images/team-khushali.jpg",
+  "/images/team-khushi.jpg",
+  "/images/team-moulshree.jpg",
+  "/images/team-niharika.jpg",
+  "/images/team-radhika.jpg",
+  "/images/team-vinayak.jpg",
+]);
+
+function getInitials(name: string) {
+  return name
+    .split(" ")
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+}
 
 export default function OurTeamPage() {
   const [activeTab, setActiveTab] = useState<Category>("Central");
@@ -98,29 +119,41 @@ export default function OurTeamPage() {
                   transition={{ duration: 0.35, ease: "easeOut" }}
                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
                 >
-                  {visible.map((member) => (
-                    <div key={member.name} className="group card-base overflow-hidden">
-                      {/* Photo */}
-                      <div className="relative w-full aspect-[3/3.2] overflow-hidden">
-                        <Image
-                          src={member.image}
-                          alt={member.name}
-                          fill
-                          className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        />
+                  {visible.map((member) => {
+                    const hasImage = AVAILABLE_TEAM_IMAGES.has(member.image);
+
+                    return (
+                      <div key={member.name} className="group card-base overflow-hidden">
+                        {/* Photo */}
+                        <div className="relative w-full aspect-[3/3.2] overflow-hidden bg-cream flex items-center justify-center">
+                          {hasImage ? (
+                            <Image
+                              src={member.image}
+                              alt={member.name}
+                              fill
+                              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            />
+                          ) : (
+                            <div className="w-24 h-24 rounded-full bg-primary-50 border border-primary/20 flex items-center justify-center">
+                              <span className="font-heading text-display-md text-primary">
+                                {getInitials(member.name)}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                        {/* Info */}
+                        <div className="p-5 text-center">
+                          <h3 className="font-heading text-heading-sm text-[#1A1A1A] mb-1">
+                            {member.name}
+                          </h3>
+                          <p className="text-body-sm font-medium text-primary">
+                            {member.role}
+                          </p>
+                        </div>
                       </div>
-                      {/* Info */}
-                      <div className="p-5 text-center">
-                        <h3 className="font-heading text-heading-sm text-[#1A1A1A] mb-1">
-                          {member.name}
-                        </h3>
-                        <p className="text-body-sm font-medium text-primary">
-                          {member.role}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </motion.div>
               </AnimatePresence>
             </div>

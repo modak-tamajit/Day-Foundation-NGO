@@ -5,11 +5,8 @@
 /* ===================================================================
  * DAY Foundation — Global Styles
  * ===================================================================
- * This file contains:
- * - CSS custom properties (design tokens)
- * - Base typography styles
- * - Reusable utility classes
- * - Smooth scrolling & selection styles
+ * Enhanced with smooth transitions, responsive utilities, and
+ * premium micro-interactions for a buttery-smooth experience.
  * =================================================================== */
 
 /* ── CSS Custom Properties (Design Tokens) ── */
@@ -34,10 +31,14 @@
   --container-padding-x: clamp(1rem, 4vw, 2rem);
   --container-max-width: 1280px;
 
-  /* Transitions */
-  --transition-fast: 200ms ease;
-  --transition-base: 300ms ease;
-  --transition-slow: 500ms ease;
+  /* Transitions — smoother cubic bezier curves */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 200ms var(--ease-smooth);
+  --transition-base: 350ms var(--ease-smooth);
+  --transition-slow: 600ms var(--ease-smooth);
+  --transition-slower: 900ms var(--ease-out-expo);
 
   /* Border radius */
   --radius-sm: 0.5rem;
@@ -57,11 +58,16 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-cream-50 text-[#1A1A1A] font-body;
     font-feature-settings: "cv11", "ss01";
+    /* Smooth page transitions */
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
   }
 
   /* Headings default to serif font */
@@ -80,9 +86,14 @@
     @apply outline-2 outline-offset-2 outline-primary;
   }
 
+  /* Smooth image loading */
+  img {
+    transition: opacity 0.4s var(--ease-smooth);
+  }
+
   /* Scrollbar styling */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
@@ -91,11 +102,18 @@
 
   ::-webkit-scrollbar-thumb {
     background: #D4C9BD;
-    border-radius: 4px;
+    border-radius: 3px;
+    transition: background 0.3s;
   }
 
   ::-webkit-scrollbar-thumb:hover {
     background: #C4572A;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #D4C9BD #FDF6EE;
   }
 }
 
@@ -103,7 +121,8 @@
 @layer components {
   /* Section wrapper — consistent vertical padding */
   .section-padding {
-    @apply py-16 md:py-22 lg:py-26;
+    padding-top: var(--section-padding-y);
+    padding-bottom: var(--section-padding-y);
   }
 
   /* Container — centered max-width wrapper */
@@ -121,30 +140,55 @@
     @apply text-body-lg text-[#6B6B6B] max-w-2xl mx-auto;
   }
 
-  /* Card base */
+  /* Card base — enhanced with smoother transitions */
   .card-base {
-    @apply bg-white rounded-3xl shadow-soft border border-border-light 
-           transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1;
+    @apply bg-white rounded-3xl shadow-soft border border-border-light;
+    transition: transform 0.5s var(--ease-smooth), 
+                box-shadow 0.5s var(--ease-smooth),
+                border-color 0.3s var(--ease-smooth);
   }
 
-  /* Button — Primary */
+  .card-base:hover {
+    @apply shadow-card-hover;
+    transform: translateY(-4px);
+  }
+
+  /* Button — Primary with smooth press effect */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 
            bg-primary text-white font-body font-semibold 
            px-6 py-3 rounded-full 
-           transition-all duration-300 
-           hover:bg-primary-dark hover:shadow-warm 
-           focus-visible:outline-primary active:scale-[0.98];
+           focus-visible:outline-primary;
+    transition: all 0.4s var(--ease-smooth);
+    will-change: transform, box-shadow;
   }
 
-  /* Button — Secondary */
+  .btn-primary:hover {
+    @apply bg-primary-dark shadow-warm;
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  /* Button — Secondary with smooth press effect */
   .btn-secondary {
     @apply inline-flex items-center justify-center gap-2 
            bg-white text-primary font-body font-semibold 
            px-6 py-3 rounded-full border-2 border-primary 
-           transition-all duration-300 
-           hover:bg-primary hover:text-white 
-           focus-visible:outline-primary active:scale-[0.98];
+           focus-visible:outline-primary;
+    transition: all 0.4s var(--ease-smooth);
+    will-change: transform;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-primary text-white;
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary:active {
+    transform: translateY(0) scale(0.98);
   }
 
   /* Badge */
@@ -171,23 +215,106 @@
     @apply relative after:absolute after:inset-0 after:bg-gradient-to-t 
            after:from-black/40 after:to-transparent after:rounded-3xl;
   }
+
+  /* Smooth link hover underline */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    border-radius: 1px;
+    transition: width 0.4s var(--ease-smooth);
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
+  }
 }
 
-/* ── Animations ── */
+/* ── Smooth Scroll Sections — reveals on scroll ── */
 @layer utilities {
-  .animation-delay-100 {
-    animation-delay: 100ms;
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+
+  /* GPU acceleration hints */
+  .gpu-accelerated {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
-  .animation-delay-200 {
-    animation-delay: 200ms;
+
+  /* Smooth section transitions between backgrounds */
+  .section-transition {
+    position: relative;
   }
-  .animation-delay-300 {
-    animation-delay: 300ms;
+
+  .section-transition::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--color-border), transparent);
+    opacity: 0.3;
   }
-  .animation-delay-400 {
-    animation-delay: 400ms;
+
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-  .animation-delay-500 {
-    animation-delay: 500ms;
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Mobile-specific smoothness improvements ── */
+@media (max-width: 768px) {
+  /* Reduce motion on mobile for better performance */
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* Ensure touch targets are large enough */
+  button, a {
+    min-height: 44px;
+  }
+
+  /* Prevent text overflow on small screens */
+  h1, h2, h3, h4 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+/* ── Reduced motion preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Print styles ── */
+@media print {
+  .no-print {
+    display: none !important;
   }
 }

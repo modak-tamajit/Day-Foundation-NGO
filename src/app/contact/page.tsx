@@ -19,7 +19,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Send, CheckCircle2 } from "lucide-react";
 import { ORG_INFO } from "@/lib/constants";

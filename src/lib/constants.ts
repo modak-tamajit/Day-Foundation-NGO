@@ -116,7 +116,7 @@ export const FOUNDER_MESSAGE = {
   title: "Founder & Executive Director",
   message:
     "At DAY Foundation, our mission is to build an inclusive society where every individual has access to Education, Aid, Youth, and Care. Since our inception, we have been dedicated to empowering youth, supporting underprivileged communities, and providing sustainable solutions through initiatives like Rojgar and child development programs. Our goal is to create a future where everyone has the opportunity to grow, lead a dignified life, and become self-reliant. I am immensely proud of our team's commitment and hard work, which makes this journey possible. Thank you for your continued support as we make a meaningful difference, together.",
-  image: "/images/founder.jpg",
+  image: "/images/team-founder.jpg",
 } as const;
 
 /* ── Mission & Vision ── */
@@ -154,6 +154,7 @@ export const FOCUS_AREAS = [
       "Providing education to slum children and underserved communities. Digital literacy programs and learning initiatives transforming futures.",
     icon: "GraduationCap",
     image: "/images/focus-education.jpg",
+    link: "/get-involved#volunteer",
   },
   {
     id: "aid",
@@ -162,6 +163,7 @@ export const FOCUS_AREAS = [
       "Organizing healthcare drives, welfare campaigns, and community support programs to provide essential aid where it's needed most.",
     icon: "HeartPulse",
     image: "/images/focus-healthcare.jpg",
+    link: "/get-involved#donate",
   },
   {
     id: "youth",
@@ -170,6 +172,7 @@ export const FOCUS_AREAS = [
       "Engaging youth through internship programs, volunteer opportunities, and leadership development to build the next generation of changemakers.",
     icon: "Users",
     image: "/images/focus-community.jpg",
+    link: "/get-involved#internship",
   },
   {
     id: "rojgar",
@@ -178,6 +181,7 @@ export const FOCUS_AREAS = [
       "Creating sustainable employment opportunities through the innovative Rojgar project, empowering communities to become self-reliant.",
     icon: "Sprout",
     image: "/images/focus-livelihood.jpg",
+    link: "/get-involved#volunteer",
   },
 ] as const;
 
@@ -192,45 +196,45 @@ export const IMPACT_STATS = [
 /* ── Team Members by City/Division ── */
 export const TEAM_BY_CATEGORY = {
   Central: [
-    { name: "Om Sen", role: "Founder & Executive Director", image: "/images/team-om.jpg" },
+    { name: "Om Sen", role: "Founder & Executive Director", image: "/images/team-founder.jpg" },
     { name: "Niharika Vasvani", role: "Head of Human Resources (HR)", image: "/images/team-niharika.jpg" },
     { name: "Aditi Tiwari", role: "Head of Programs & Development", image: "/images/team-aditi.jpg" },
     { name: "Radhika Umre", role: "Head of Social Media & Marketing", image: "/images/team-radhika.jpg" },
     { name: "Khushi Tandan", role: "Legal & Communication Head", image: "/images/team-khushi.jpg" },
-    { name: "Vaibhav Sharma", role: "Head of Finance", image: "/images/team-vaibhav.jpg" },
+    { name: "Vaibhav Sharma", role: "Head of Finance", image: "" },
     { name: "Khushali Tak", role: "Hiring Executive", image: "/images/team-khushali.jpg" },
-    { name: "Gunika Upadhyay", role: "Outreach Manager", image: "/images/team-gunika.jpg" },
+    { name: "Gunika Upadhyay", role: "Outreach Manager", image: "" },
   ],
   Jabalpur: [
     { name: "Vinayak Khandelwal", role: "Management Coordinator", image: "/images/team-vinayak.jpg" },
     { name: "Moulshree Sahu", role: "Creative Head", image: "/images/team-moulshree.jpg" },
-    { name: "Nayanika Gupta", role: "Assistant Creative Head", image: "/images/team-nayanika.jpg" },
-    { name: "Yash Jhureley", role: "Head of Logistics", image: "/images/team-yash.jpg" },
-    { name: "Harsh Soni", role: "Assistant Head of Logistics", image: "/images/team-harsh-soni.jpg" },
-    { name: "Ananya Jayan", role: "Education & Curriculum Manager", image: "/images/team-ananya.jpg" },
-    { name: "Ishika Singh Verma", role: "Education & Curriculum Manager", image: "/images/team-ishika.jpg" },
-    { name: "Amit Kanojiya", role: "Head of Human Resources (HR)", image: "/images/team-amit.jpg" },
+    { name: "Nayanika Gupta", role: "Assistant Creative Head", image: "" },
+    { name: "Yash Jhureley", role: "Head of Logistics", image: "" },
+    { name: "Harsh Soni", role: "Assistant Head of Logistics", image: "" },
+    { name: "Ananya Jayan", role: "Education & Curriculum Manager", image: "" },
+    { name: "Ishika Singh Verma", role: "Education & Curriculum Manager", image: "" },
+    { name: "Amit Kanojiya", role: "Head of Human Resources (HR)", image: "" },
   ],
   Indore: [
-    { name: "Khushi Chanodiya", role: "Management Coordinator", image: "/images/team-khushi-c.jpg" },
-    { name: "Nikita Patel", role: "Education & Curriculum Manager", image: "/images/team-nikita.jpg" },
-    { name: "Saurabh Pandey", role: "Education & Curriculum Manager", image: "/images/team-saurabh.jpg" },
-    { name: "Zenab Sheikh", role: "Creative Head", image: "/images/team-zenab.jpg" },
-    { name: "Urvi", role: "Assistant Creative Head", image: "/images/team-urvi.jpg" },
-    { name: "Edwin Kujur", role: "Head of Human Resources (HR)", image: "/images/team-edwin.jpg" },
-    { name: "Priyanshi Dubey", role: "Assistant Human Resources (HR) Head", image: "/images/team-priyanshi.jpg" },
-    { name: "Dhruv Mukati", role: "Head of Logistics", image: "/images/team-dhruv.jpg" },
-    { name: "Abhijeet Singh Sengar", role: "Assistant Head of Logistics", image: "/images/team-abhijeet.jpg" },
-    { name: "Neha Singh", role: "Legal Manager", image: "/images/team-neha.jpg" },
-    { name: "Khushi Kapoor", role: "Health Care Manager", image: "/images/team-khushi-k.jpg" },
+    { name: "Khushi Chanodiya", role: "Management Coordinator", image: "" },
+    { name: "Nikita Patel", role: "Education & Curriculum Manager", image: "" },
+    { name: "Saurabh Pandey", role: "Education & Curriculum Manager", image: "" },
+    { name: "Zenab Sheikh", role: "Creative Head", image: "" },
+    { name: "Urvi", role: "Assistant Creative Head", image: "" },
+    { name: "Edwin Kujur", role: "Head of Human Resources (HR)", image: "" },
+    { name: "Priyanshi Dubey", role: "Assistant Human Resources (HR) Head", image: "" },
+    { name: "Dhruv Mukati", role: "Head of Logistics", image: "" },
+    { name: "Abhijeet Singh Sengar", role: "Assistant Head of Logistics", image: "" },
+    { name: "Neha Singh", role: "Legal Manager", image: "" },
+    { name: "Khushi Kapoor", role: "Health Care Manager", image: "" },
   ],
   "Social Media": [
-    { name: "Aadya Mishra", role: "Head of Social Media", image: "/images/team-aadya.jpg" },
-    { name: "Archie Yadav", role: "Assistant Head of Social Media", image: "/images/team-archie.jpg" },
-    { name: "Harsh Vishwakarma", role: "Assistant Head of Social Media", image: "/images/team-harsh-v.jpg" },
-    { name: "Shaurya Nanda", role: "Head of Public Relations (PR)", image: "/images/team-shaurya.jpg" },
-    { name: "Saniya Naaz", role: "Assistant Head of Public Relations (PR)", image: "/images/team-saniya.jpg" },
-    { name: "Ayushman Rathore", role: "Assistant Head of Public Relations (PR)", image: "/images/team-ayushman.jpg" },
+    { name: "Aadya Mishra", role: "Head of Social Media", image: "" },
+    { name: "Archie Yadav", role: "Assistant Head of Social Media", image: "" },
+    { name: "Harsh Vishwakarma", role: "Assistant Head of Social Media", image: "" },
+    { name: "Shaurya Nanda", role: "Head of Public Relations (PR)", image: "" },
+    { name: "Saniya Naaz", role: "Assistant Head of Public Relations (PR)", image: "" },
+    { name: "Ayushman Rathore", role: "Assistant Head of Public Relations (PR)", image: "" },
   ],
 } as const;
 
@@ -284,35 +288,69 @@ export const TESTIMONIALS = [
       "My 15-day internship with DAY Foundation was a meaningful learning experience. I researched SHGs and subsidised education, worked on Project Muskan — creating a crowdfunding pitch, video, and graphic — and explored PR for NGOs. This experience strengthened my skills in research, creativity, and communication.",
     name: "Kushagra Jain",
     location: "Intern",
-    image: "/images/testimonial-4.jpg",
+    image: "",
   },
 ] as const;
 
 /* ── Campaigns / Programs ── */
 export const CAMPAIGNS = [
   {
+    id: "education",
     title: "Education for Slum Children",
     category: "Education",
     description:
       "Providing quality education, learning materials, and mentorship to children in urban slum communities across Delhi, Indore, and Jabalpur.",
     image: "/images/campaign-education.jpg",
-    link: "/impact",
+    link: "/impact#campaign-education",
   },
   {
+    id: "healthcare",
     title: "Healthcare & Welfare Drives",
     category: "Healthcare",
     description:
       "Organizing health camps, awareness drives, and welfare programs in underserved communities to bring essential care to those who need it most.",
     image: "/images/campaign-health.jpg",
-    link: "/impact",
+    link: "/impact#campaign-healthcare",
   },
   {
+    id: "livelihood",
     title: "Rojgar — Employment Initiative",
     category: "Livelihood",
     description:
       "Creating sustainable employment opportunities and skill-building programs to empower youth and communities towards self-reliance.",
     image: "/images/campaign-livelihood.jpg",
-    link: "/impact",
+    link: "/impact#campaign-livelihood",
+  },
+] as const;
+
+/* ── Impact Stories ── */
+export const STORIES = [
+  {
+    id: "learning-circles",
+    title: "Learning Circles in Jabalpur",
+    category: "Education",
+    description:
+      "Children in community learning groups are building daily reading habits, confidence, and curiosity with support from volunteer mentors.",
+    image: "/images/gallery-1.jpg",
+    link: "/impact#story-learning-circles",
+  },
+  {
+    id: "care-camps",
+    title: "Care Camps That Reach Families Early",
+    category: "Healthcare",
+    description:
+      "Monthly awareness camps help underserved families access preventive health information, welfare guidance, and local support.",
+    image: "/images/gallery-3.jpg",
+    link: "/impact#story-care-camps",
+  },
+  {
+    id: "weekend-volunteers",
+    title: "Youth Volunteers Turning Weekends Into Service",
+    category: "Volunteer Stories",
+    description:
+      "Students and young professionals are contributing time, planning skills, and on-ground energy to strengthen education and welfare drives.",
+    image: "/images/volunteer-cta.jpg",
+    link: "/impact#story-weekend-volunteers",
   },
 ] as const;
 
@@ -356,36 +394,43 @@ export const EVENTS = [
 export const FAQ_ITEMS = [
   {
     question: "What is DAY Foundation?",
+    category: "Programs",
     answer:
       "DAY Foundation (BHTDAY Welfare Foundation) is a Section 8, NITI Aayog-registered NGO founded on 12th April 2022. We are dedicated to empowering underprivileged communities across India through Education, Aid, Youth, and Care. We are active in Delhi, Indore, and Jabalpur.",
   },
   {
     question: "How can I volunteer with DAY Foundation?",
+    category: "Volunteering",
     answer:
       "You can apply through our official Volunteer Form. DAY Foundation follows a 60% offline and 40% online working structure. Offline participation in drives and on-ground activities is mandatory. Online work includes planning, coordination, content, and communication support. Contact us at volunteer@dayfoundation.in for more details.",
   },
   {
     question: "What internship programs do you offer?",
+    category: "Programs",
     answer:
       "We offer 15-day social work internship programs. Till date, we have trained 1,200+ interns and issued 800+ certificates. These are no-stipend internships focused on hands-on social impact work. Apply through our Internship Form or email hr@dayfoundation.in.",
   },
   {
     question: "How does DAY Foundation ensure transparency?",
+    category: "Certifications",
     answer:
       "DAY Foundation follows a strict and independent funding model. We do not accept CSR funding from corporate entities, and there is no involvement with political funding or affiliations. All funds are raised through controlled and approved channels only. Every transaction is properly recorded, monitored, and legally compliant.",
   },
   {
     question: "How can I donate to DAY Foundation?",
+    category: "Donations",
     answer:
       "You can donate through our official Donation Form available on our website. All financial decisions and fund usage are handled only by authorized management. Funds are used strictly for organisational objectives and welfare activities. For queries, contact support@dayfoundation.in.",
   },
   {
     question: "Where does DAY Foundation operate?",
+    category: "Programs",
     answer:
       "We currently operate in Delhi, Indore, and Jabalpur. Our future vision includes expanding to Delhi NCR, Prayagraj, and Mumbai. We are also planning to expand into universities and colleges to build a youth-driven network.",
   },
   {
     question: "What is the Rojgar initiative?",
+    category: "Programs",
     answer:
       "Rojgar is our innovative employment project aimed at creating sustainable employment opportunities for underprivileged communities. It's part of our upcoming Segment 2 launch alongside Mental Wellness initiatives.",
   },
@@ -432,7 +477,7 @@ export const FOOTER_LINKS = {
   navigate: [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
-    { label: "Our Team", href: "/about#team" },
+    { label: "Our Team", href: "/our-team" },
     { label: "Our Work", href: "/programs" },
     { label: "Get Involved", href: "/get-involved" },
     { label: "Contact Us", href: "/contact" },

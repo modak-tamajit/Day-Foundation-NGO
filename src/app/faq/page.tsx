@@ -32,12 +32,19 @@ const CATEGORIES = [
 
 export default function FAQPage() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const filteredItems = FAQ_ITEMS.filter(
-    (item) =>
-      item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.answer.toLowerCase().includes(searchQuery.toLowerCase())
+    (item) => {
+      const normalizedQuery = searchQuery.toLowerCase();
+      const matchesSearch =
+        item.question.toLowerCase().includes(normalizedQuery) ||
+        item.answer.toLowerCase().includes(normalizedQuery);
+      const matchesCategory = !activeCategory || item.category === activeCategory;
+
+      return matchesSearch && matchesCategory;
+    }
   );
 
   return (
@@ -68,7 +75,10 @@ export default function FAQPage() {
                 type="text"
                 placeholder='Search for "80G receipt", "Volunteering"...'
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  setOpenIndex(null);
+                }}
                 className="w-full pl-12 pr-5 py-4 rounded-full border border-border bg-white text-body-md shadow-soft focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all"
                 id="faq-search"
               />
@@ -82,19 +92,48 @@ export default function FAQPage() {
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {CATEGORIES.map((cat, i) => (
-              <motion.div
-                key={i}
+              <motion.button
+                key={cat.label}
+                type="button"
+                onClick={() => {
+                  setActiveCategory(activeCategory === cat.label ? null : cat.label);
+                  setOpenIndex(null);
+                }}
+                aria-pressed={activeCategory === cat.label}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center p-5 rounded-2xl bg-white shadow-soft border border-border-light hover:shadow-card hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                className={`text-center p-5 rounded-2xl shadow-soft border transition-all duration-300 cursor-pointer ${
+                  activeCategory === cat.label
+                    ? "bg-primary text-white border-primary shadow-warm"
+                    : "bg-white border-border-light hover:shadow-card hover:-translate-y-1"
+                }`}
               >
-                <div className="w-12 h-12 rounded-full bg-secondary-50 flex items-center justify-center mx-auto mb-3">
-                  <cat.icon className="text-secondary" size={22} />
+                <div
+                  className={`w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-3 ${
+                    activeCategory === cat.label ? "bg-white/20" : "bg-secondary-50"
+                  }`}
+                >
+                  <cat.icon
+                    className={activeCategory === cat.label ? "text-white" : "text-secondary"}
+                    size={22}
+                  />
                 </div>
-                <h3 className="text-body-md font-semibold text-[#1A1A1A]">{cat.label}</h3>
-                <p className="text-caption text-[#6B6B6B]">{cat.description}</p>
-              </motion.div>
+                <h3
+                  className={`text-body-md font-semibold ${
+                    activeCategory === cat.label ? "text-white" : "text-[#1A1A1A]"
+                  }`}
+                >
+                  {cat.label}
+                </h3>
+                <p
+                  className={`text-caption ${
+                    activeCategory === cat.label ? "text-white/80" : "text-[#6B6B6B]"
+                  }`}
+                >
+                  {cat.description}
+                </p>
+              </motion.button>
             ))}
           </div>
         </div>
@@ -154,7 +193,7 @@ export default function FAQPage() {
               <div className="text-center py-12">
                 <HelpCircle className="text-[#9B9B9B] mx-auto mb-4" size={40} />
                 <p className="text-body-lg text-[#6B6B6B]">
-                  No questions found matching &ldquo;{searchQuery}&rdquo;
+                  No questions found matching your filters.
                 </p>
               </div>
             )}
@@ -181,9 +220,9 @@ export default function FAQPage() {
               <Link href="/contact" className="btn-primary">
                 Contact Us
               </Link>
-              <button className="btn-secondary">
+              <Link href="/contact" className="btn-secondary">
                 Request a Callback
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>

@@ -17,6 +17,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { GraduationCap, HeartPulse, Sprout, Users, ArrowRight } from "lucide-react";
 import { FOCUS_AREAS } from "@/lib/constants";
@@ -91,9 +92,9 @@ export default function ProgramsPage() {
                   <p className="text-body-lg text-[#6B6B6B] leading-relaxed mb-6">
                     {program.description}
                   </p>
-                  <button className="btn-primary">
+                  <Link href={program.link} className="btn-primary">
                     Learn More <ArrowRight size={18} />
-                  </button>
+                  </Link>
                 </div>
               </motion.div>
             );
